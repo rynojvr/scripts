@@ -1,0 +1,18 @@
+[Unit]
+Description=Keeps a tunnel to 'rynojvr.com' open
+After=network.target
+
+[Service]
+# -p [PORT]
+# -l [user]
+# -M 0 --> no monitoring
+# -N Just open the connection and do nothing (not interactive)
+# LOCALPORT:IP_ON_EXAMPLE_COM:PORT_ON_EXAMPLE_COM
+#ExecStart=/usr/bin/autossh -p 22 -l rynojvr rynojvr.com -L *:7000:127.0.0.1:22 -i /root/.ssh/id_rsa 2>&1 >> /tmp/autossh.log
+Type=forking
+Restart=on-failure
+RestartSec=60s
+ExecStart=/root/bin/start_autossh.sh
+
+[Install]
+WantedBy=multi-user.target
