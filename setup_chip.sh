@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function pause_prompt {
-	read -p $1;
+	read -p $@;
 }
 
 sudo apt-get update;
@@ -9,9 +9,14 @@ sudo apt-get update;
 
 pause_prompt "Just ran Apt-get Update. Next is SSHKEYGEN"
 
+temp=$(date +%s | sha256sum | base64 | head -c 6)
+sudo sed -i.bak "s/chip/chip-$temp/" /etc/hostname
+sudo sed -i.bak "s/chip/chip-$temp/" /etc/hosts
+sudo hostname "chip-$temp"
+
 # ----- Create and Add SSH Keys -----
 ssh-keygen -t rsa -b 2048 -N "" -f .ssh/id_rsa
-ssh-copy-id rynojvr@rynojvr.com	
+ssh-copy-id rynojvr@rynojvr.com
 
 pause_prompt "Finished SSHKEYGEN stuff. AutoSSH config next"
 
