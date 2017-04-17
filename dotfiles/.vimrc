@@ -49,5 +49,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Show the hidden files
 let g:ctrlp_show_hidden=1
 let NERDTreeShowHidden=1
+
+" Gotta have some syntax
+syntax on
