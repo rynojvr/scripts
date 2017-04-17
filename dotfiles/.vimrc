@@ -53,5 +53,12 @@ filetype plugin indent on    " required
 let g:ctrlp_show_hidden=1
 let NERDTreeShowHidden=1
 
+" Automatically update CtrlP's indexing
+let g:NERDTreeChDirMode = 2
+let g:ctrlp_working_path_mode = 'rw'
+
 " Gotta have some syntax
 syntax on
+
+" Ctrl-P enable line search
+let g:ctrlp_extensions = ['line']
