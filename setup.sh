@@ -45,7 +45,8 @@ function install_centos_deps {
         devtoolset-2-gcc-c++-4.8.1 \
         gcc \
         gcc-c++ \
-        kernel-devel 
+        kernel-devel \
+	vim     # Apparently I can't take this existing for granted
 }
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
