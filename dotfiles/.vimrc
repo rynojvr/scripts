@@ -12,10 +12,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'tyrannicaltoucan/vim-quantum'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -25,6 +26,7 @@ Plugin 'bling/vim-airline'
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'tyrannicaltoucan/vim-quantum'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -57,8 +59,13 @@ let NERDTreeShowHidden=1
 let g:NERDTreeChDirMode = 2
 let g:ctrlp_working_path_mode = 'rw'
 
+" Ctrl-P enable line search
+let g:ctrlp_extensions = ['line']
+
 " Gotta have some syntax
 syntax on
 
-" Ctrl-P enable line search
-let g:ctrlp_extensions = ['line']
+set background=dark
+set termguicolors
+colorscheme quantum
+
