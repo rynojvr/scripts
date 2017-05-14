@@ -20,12 +20,32 @@ function install_darwin_deps {
 function install_debian_deps {
     echo "Installing Debian deps..."
     sudo apt-get update;
-    sudo apt-get -y install \
-        build-essential
-        cmake
-        git
-        python-dev
-        python3-dev	
+    sudo apt-get -y install build-essential cmake git python-dev python3-dev python-pip python3-pip xutils-dev bison;
+}
+
+function general_setup {
+	lndir $(pwd)/dotfiles/ ~/
+
+	install_golang
+}
+
+function install_golang {
+#	bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+#	source "$HOME/.gvm/scripts/gvm"
+
+#	gvm install go1.8 
+	sudo apt-get install -y golang
+
+	mkdir -p $HOME/dev/go/{bin,src,pkg}
+}
+
+function install_neovim {
+	sudo add-apt-repository -y ppa:neovim-ppa/stable
+	sudo apt-get update
+	sudo apt-get install -y neovim
+
+	nvim +PlugUpdate! +qall
+	nvim +GoInstallBinaries +qall
 }
 
 function install_centos_deps {
@@ -58,6 +78,8 @@ elif [[ -f /etc/centos-release ]]; then
 else
 	echo "Found a Debian system..."
 	install_debian_deps
+	general_setup
+	install_neovim
 fi
 
 # dotfile symlinks
@@ -67,10 +89,13 @@ if [ ! -d dotfiles/ ]; then
 fi
 ln -s $(pwd)/dotfiles/.* ~/
 
-# vim setup
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-pushd .
-cd ~/.vim/bundle/YouCompleteMe
-./install.py 
+# vim setup
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#vim +PluginInstall +qall
+
+#pushd .
+#cd ~/.vim/bundle/YouCompleteMe
+#./install.py 
