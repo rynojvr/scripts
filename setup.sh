@@ -43,7 +43,9 @@ function install_neovim {
 	sudo add-apt-repository -y ppa:neovim-ppa/stable
 	sudo apt-get update
 	sudo apt-get install -y neovim
+}
 
+function configure_neovim {
 	nvim +PlugUpdate! +qall
 	nvim +GoInstallBinaries +qall
 }
@@ -78,8 +80,10 @@ elif [[ -f /etc/centos-release ]]; then
 else
 	echo "Found a Debian system..."
 	install_debian_deps
-	general_setup
 	install_neovim
+	general_setup
+	configure_neovim
+	source $HOME/.bashrc
 fi
 
 # dotfile symlinks
