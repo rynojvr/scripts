@@ -46,6 +46,9 @@ function install_neovim {
 }
 
 function configure_neovim {
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 	nvim +PlugUpdate! +qall
 	nvim +GoInstallBinaries +qall
 }
@@ -91,10 +94,7 @@ if [ ! -d dotfiles/ ]; then
 	echo "Unable to locate dotfiles/ Exiting..."
 	exit 1
 fi
-ln -s $(pwd)/dotfiles/.* ~/
-
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#ln -s $(pwd)/dotfiles/.* ~/
 
 # vim setup
 #git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
