@@ -79,7 +79,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	install_darwin_deps
 elif [[ -f /etc/centos-release ]]; then
     echo "Found a Centos system..."
-    install_centos_deps    
+    install_centos_deps bash setup_scripts/centos.sh
 else
 	echo "Found a Debian system..."
 	install_debian_deps
@@ -94,6 +94,19 @@ if [ ! -d dotfiles/ ]; then
 	echo "Unable to locate dotfiles/ Exiting..."
 	exit 1
 fi
+cd dotfiles;
+cp -as "$(pwd)"/. $HOME
+cd ../
+
+# General Config stuff
+
+# NVIM
+configure_neovim
+
+
+
+
+
 #ln -s $(pwd)/dotfiles/.* ~/
 
 # vim setup

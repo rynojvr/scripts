@@ -1,0 +1,8 @@
+# Adding Repo to pull in C++11 support
+
+[DevToolset-2]
+name=RedHat DevToolset v2 $releasever - $basearch
+#baseurl=http://puias.princeton.edu/data/puias/DevToolset/$releasever/$basearch/
+baseurl=http://mirror.centos.org/centos/$releasever/$basearch/rh/devtoolset-3/
+enabled=1
+gpgcheck=0

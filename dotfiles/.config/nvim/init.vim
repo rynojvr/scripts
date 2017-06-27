@@ -45,6 +45,6 @@ let g:ctrlp_extensions = ['line']
 syntax on
 
 set background=dark
-" set termguicolors
+set termguicolors
 colorscheme quantum
 
