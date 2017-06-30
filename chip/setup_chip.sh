@@ -5,7 +5,8 @@ function pause_prompt {
 }
 
 sudo apt-get update;
-#sudo apt-get install -y \
+sudo apt-get install -y \
+	autossh
 
 pause_prompt "Just ran Apt-get Update. Next is SSHKEYGEN"
 
