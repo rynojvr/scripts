@@ -48,3 +48,5 @@ set background=dark
 set termguicolors
 colorscheme quantum
 
+set number
+
