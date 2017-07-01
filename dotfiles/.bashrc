@@ -88,9 +88,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -lah'
+alias ll='ls -alhF'
 alias la='ls -A'
-alias l='ls -lh'
+alias l='ls -ah'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -115,6 +115,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/bin/go/bin
+#export GOROOT=/home/rynojvr/dev/go
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/bin
+export GOPATH=/home/rynojvr/dev/go
 
-export GOPATH="$HOME/dev/go/"
-export GOBIN="$GOPATH/bin"
+
+# Packer PATH stuff
+export PATH=$PATH:/usr/local/packer
+
+alias speed="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
