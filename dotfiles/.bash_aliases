@@ -5,3 +5,4 @@ function ptest() {
 
 alias vi='nvim'
 alias vim='nvim'
+alias xopen='xdg-open'

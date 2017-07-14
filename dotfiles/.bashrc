@@ -124,4 +124,12 @@ export GOPATH=/home/rynojvr/dev/go
 # Packer PATH stuff
 export PATH=$PATH:/usr/local/packer
 
+# Stuffs for ranger file manager
+export EDITOR=nvim
+export PAGER=less
+
 alias speed="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
