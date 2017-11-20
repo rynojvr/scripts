@@ -21,6 +21,6 @@ sudo apt-get install build-essentials
 cd $INSTALL_DIR
 git clone https://github.com/rynojvr/mana
 cd mana
-./chip-install.sh
+sudo ./chip-install.sh
 
 sudo apt-get install vim
