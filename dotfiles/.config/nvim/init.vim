@@ -27,6 +27,13 @@ Plug 'tyrannicaltoucan/vim-quantum'
 
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
+Plug 'SirVer/ultisnips'
+
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -48,5 +55,42 @@ set background=dark
 set termguicolors
 colorscheme quantum
 
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+
+
+" Love line numbers
 set number
 
+" Automatically writes files on :GoBuild, etc...
+set autowrite
+
+" Testing configs from https://github.com/fatih/vim-go-tutorial
+"
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b  :<C-u>call <SID>build_go_files()<CR>
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>c  <Plug>(go-coverage-toggle)
+
+let g:go_highlight_types = 1
+let g:go_hightlight_fields = 1
+
+" Autocomplete stuff?
+let g:python3_host_prog = '/usr/bin/python3'
+let g:python3_host_skip_check = 1
+set runtimepath+=/home/rynojvr/.local/share/nvim/plugged/deoplete.nvim/
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#pointer = 1
+let g:deoplete#sources#go#use_cache = 1 
+let g:deoplete#sources#go#cgo = 1 
