@@ -22,6 +22,8 @@ sudo apt-get install -y make
 cd $INSTALL_DIR
 git clone https://github.com/rynojvr/mana
 cd mana
+git submodule init
+git submodule update
 sudo ./chip-install.sh
 
 sudo apt-get install -y vim
