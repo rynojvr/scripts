@@ -14,7 +14,8 @@ cd scripts/
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-sudo apt-get install build-essentials
+sudo apt-get install -y build-essentials
+sudo apt-get install -y make
 
 # --------- Mana ---------
 
@@ -23,4 +24,4 @@ git clone https://github.com/rynojvr/mana
 cd mana
 sudo ./chip-install.sh
 
-sudo apt-get install vim
+sudo apt-get install -y vim
