@@ -94,6 +94,9 @@ function install_neovim() {
 
 	nvim +PlugUpdate! +qall
 	nvim +GoInstallBinaries +qall
+
+	# May not work... Used for some plugins
+	pip install neovim
 }
 
 function install_neofetch {
@@ -109,3 +112,24 @@ function install_neofetch {
 	sudo make install
 }
 
+function install_compton {
+	sudo apt-add-repository ppa:richardgv/compton
+	sudo apt-get update
+	sudo apt-get install compton
+}
+
+if ! [ -x "$(command -v compton)" ]; then
+	read -p "Compton not detected. Install? [Y/n]:" choice
+	case "$choice" in
+		y|Y) install_compton;;
+		n|N) return;;
+		"") install_compton;;
+	esac
+else
+	read -p "Compton already installed. Press enter to continue"
+fi
+
+# Some extra stuff 
+# - GoCode for golang autocompletion
+echo "Fetching gocode..."
+go get -u github.com/nsf/gocode
