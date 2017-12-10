@@ -1,9 +1,11 @@
 #!/bin/bash
 
-echo -n "Enter new hostname: "
+echo -n "Enter new hostname [$(hostname)]: "
 read new_hostname
-echo "Setting hostname to [$new_hostname]"
-hostnamectl set-hostname $new_hostname
+if [[ "$new_hostname" ne "" ]]; then
+	echo "Setting hostname to [$new_hostname]"
+	hostnamectl set-hostname $new_hostname
+fi
 
 # Get the SaltStack bootstrap
 if command -v curl 2>/dev/null; then
