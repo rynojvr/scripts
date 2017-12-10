@@ -2,7 +2,7 @@
 
 echo -n "Enter new hostname [$(hostname)]: "
 read new_hostname
-if [[ "$new_hostname" ne "" ]]; then
+if [[ "$new_hostname" -ne "" ]]; then
 	echo "Setting hostname to [$new_hostname]"
 	hostnamectl set-hostname $new_hostname
 fi
